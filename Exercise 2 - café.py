@@ -29,35 +29,53 @@ print(f" Le meilleur cafe est { resultat[0] }. " )
 
 # solution OO
 
-class Café:
-    def __init__(self, nom, disance, qualité):
+# print(liste_cafés[0] == liste_cafés[1])    return difference
+
+
+
+cafes = [('CafeA', 10, 1), ('CafeB', 10, 10), ('CafeC', 8, 1), ('CafeD', 9, 2), ('CafeE', 11, 3),
+    ('CafeZero',0,10), ('CafeTresProche',0.1,11), ('CafeTresLoin', 100, 110000)]
+
+
+
+class Cafe:
+    def __init__(self, nom, distance, qualite):
         self.nom = nom
-        self.disance = disance
-        self.qualité = qualité
-        if disance == 0 or disance < 1:
-            disance = 0.00001
-        if disance > 15:
-            disance = 1
-            qualité = 0
-        self.score = qualité/disance
+        self.distance = distance
+        self.qualite = qualite
+        if distance == 0 or distance < 1:
+            distance = 0.1
+        if distance > 15:
+            distance = 1
+            qualite = 0
+
+        self.score = qualite / distance
 
     def __str__(self):
-        return f"{self.nom} est a {self.disance} km et a une qualité de {self.qualité}."
+        print("Function __str")
+        return f"{self.nom} est à {self.distance} km et a une qualité de {self.qualite}."
 
     def __repr__(self):
         print("Function __rep")
         return f"{self.nom}"
 
+
     def __eq__(self, other):
         return self.score - other.score
 
-    #def calculer_score(self):
 
 
-liste_cafés = []
-for cafe in choix:
-    liste_cafés.append(Café(cafe[0], cafe[1], cafe[2]))
+liste_cafes = []
+for cafe in cafes:
+    liste_cafes.append(Cafe(cafe[0], cafe[1], cafe[2]))
 
-liste_cafés.sort(key=lambda x: x.score, reverse=True)
-print(liste_cafés[0])
-# print(liste_cafés[0] == liste_cafés[1])    return difference
+liste_cafes.sort(key=lambda x: x.score, reverse=True)
+
+print(liste_cafes[0])
+
+
+
+
+
+
+
